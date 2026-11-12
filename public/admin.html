@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ผู้ดูแลการสอบ · พล 032437</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#9b1c1c;--ink:#1f2328;--mut:#5b6470;--line:#e3e6ea;--bg:#f6f7f9;--ok:#1a7f37;--warn:#b26a00}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Sarabun,Tahoma,sans-serif;font-size:16px}
+.wrap{max-width:1280px;margin:0 auto;padding:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+h1{font-size:22px;margin:0;color:var(--red)} h2{font-size:18px;margin:0 0 10px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.row>div{display:flex;flex-direction:column;gap:4px}
+label{font-size:14px;color:var(--mut);font-weight:600}
+input,select{padding:8px 10px;border:1px solid #c9ced6;border-radius:8px;font:inherit}
+.btn{border:0;border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;background:var(--red);color:#fff}
+.btn.sec{background:#fff;color:var(--ink);border:1px solid #c9ced6}
+.btn.ok{background:var(--ok)} .btn.sm{padding:4px 8px;font-size:13px}
+.switch{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.stat div{background:#f6f7f9;border-radius:10px;padding:10px}
+.stat b{display:block;font-size:24px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#fafbfc;position:sticky;top:0;cursor:pointer;white-space:nowrap}
+tr:hover td{background:#fcfcfd}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;margin:1px;background:#f1f3f5}
+.tag.p{background:#e7f0ff;color:#1f4e9b}.tag.s{background:#e7f5ec;color:var(--ok)}.tag.w{background:#fff3e0;color:var(--warn)}.tag.r{background:#fdecec;color:var(--red)}
+.mut{color:var(--mut)} .num{text-align:right;font-variant-numeric:tabular-nums}
+#login{max-width:420px;margin:60px auto}
+#app{display:none}
+.tabs{display:flex;gap:6px;margin-bottom:10px}.tabs button{border:1px solid #c9ced6;background:#fff;border-radius:8px;padding:6px 12px;font:inherit;cursor:pointer}.tabs button.on{background:var(--red);color:#fff;border-color:var(--red)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:flex-start;justify-content:center;padding:30px;z-index:9;overflow:auto}
+.ov .box{background:#fff;border-radius:12px;max-width:900px;width:100%;padding:18px}
+.msg{padding:8px 10px;border-radius:8px;margin-top:8px;background:#fdecec;color:#8a1c1c;display:none}
+.topnav{background:#9b1c1c;color:#fff}
+.topnav .in{max-width:1100px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topnav .brand{font-weight:700;font-size:18px;margin-right:auto}
+.topnav .brand small{display:block;font-weight:400;font-size:13px;opacity:.85}
+.topnav a{color:#fff;text-decoration:none;padding:8px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.45);font-weight:600}
+.topnav a.on{background:#fff;color:#9b1c1c;border-color:#fff}
+.topnav a:hover{background:rgba(255,255,255,.15)} .topnav a.on:hover{background:#fff}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin-top:8px}
+.mode{display:flex;gap:8px;align-items:flex-start;border:1.5px solid #d5d9df;border-radius:10px;padding:10px;cursor:pointer;color:var(--ink);font-size:16px}
+.mode small{display:block;color:var(--mut);font-weight:400;font-size:13px}
+.mode:has(input:checked){border-color:var(--red);background:#fff5f5}
+.th{color:var(--blue,#1f4e9b);font-size:13px;min-height:18px}
+.phase{padding:10px 12px;border-radius:10px;font-weight:600;margin-bottom:6px}
+.phase.closed{background:#f1f3f5;color:#5b6470}.phase.before{background:#fff8e6;color:#7a4b00}.phase.open{background:#e7f5ec;color:#1a7f37}.phase.ended{background:#fdecec;color:#9b1c1c}
+.msg.ok{display:block;background:#e7f5ec;color:#1a7f37}
+.bad{color:var(--red);font-weight:700}.good{color:var(--ok);font-weight:700}
+</style>
+</head>
+<body>
+<nav class="topnav" id="topnav"><div class="in">
+  <div class="brand">ระบบสอบออนไลน์ พล 032437<small>ทักษะและการสอนกีฬามวยไทย · ภาคการศึกษา 2/2569</small></div>
+  <a href="/">นักศึกษา: เข้าสอบ</a>
+  <a href="/admin" class="on">อาจารย์: ผู้ดูแลการสอบ</a>
+</div></nav>
+<div id="login" class="card">
+  <h1>ผู้ดูแลการสอบ</h1>
+  <p class="mut">สำหรับอาจารย์ผู้สอน: เปิด-ปิดการสอบ ดูคะแนน และดาวน์โหลดผลสอบ</p>
+  <form id="lf"><label>รหัสผ่านผู้ดูแล</label><br><input type="password" id="pw" style="width:100%" autocomplete="current-password"><br><br>
+  <button class="btn" style="width:100%">เข้าสู่ระบบ</button><div id="lerr" class="msg"></div></form>
+</div>
+
+<div id="app" class="wrap">
+  <div class="row" style="justify-content:space-between;margin-bottom:12px">
+    <h1>ผู้ดูแลการสอบ · พล 032437 แบบทดสอบปลายภาค</h1>
+    <div><span class="mut" id="clock"></span> <button class="btn sec sm" id="logout">ออกจากระบบ</button></div>
+  </div>
+
+  <div class="card">
+    <h2>ตั้งค่าการสอบ</h2>
+    <div id="phase" class="phase"></div>
+    <div class="modes">
+      <label class="mode"><input type="radio" name="mode" value="closed"> <span><b>ปิดการสอบ</b><small>นักศึกษาเข้าสอบไม่ได้</small></span></label>
+      <label class="mode"><input type="radio" name="mode" value="scheduled"> <span><b>เปิด-ปิดตามวันเวลาที่กำหนด</b><small>ระบบเปิดและปิดเองอัตโนมัติ</small></span></label>
+      <label class="mode"><input type="radio" name="mode" value="open"> <span><b>เปิดทันที</b><small>เปิดจนกว่าจะกดปิด (ใส่เวลาปิดได้)</small></span></label>
+    </div>
+    <div class="row" id="timeRow" style="margin-top:12px">
+      <div><label>วันเวลาเปิดสอบ</label><input type="datetime-local" id="cOpenAt" step="60"><small class="th" id="pOpen"></small></div>
+      <div><label>วันเวลาปิดสอบ (ทุกคนต้องส่งไม่เกินเวลานี้)</label><input type="datetime-local" id="cCloseAt" step="60"><small class="th" id="pClose"></small></div>
+      <div><label>ตั้งเร็ว</label><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sec sm" type="button" data-q="90">ปิด = เปิด + 90 นาที</button><button class="btn sec sm" type="button" data-q="120">ปิด = เปิด + 120 นาที</button><button class="btn sec sm" type="button" id="clearTime">ล้างเวลา</button></div></div>
+    </div>
+    <div class="row" style="margin-top:12px">
+      <div><label>เวลาทำข้อสอบต่อคน (นาที)</label><input type="number" id="cDur" min="5" max="300" style="width:110px"></div>
+      <div><label>ทำผิดได้สูงสุด (ครั้ง)</label><input type="number" id="cMax" min="1" max="20" style="width:110px"></div>
+      <div><label>หมู่เรียน (คั่นด้วย ,)</label><input id="cSec" style="width:300px"></div>
+      <div><label>แสดงคะแนนหลังส่ง</label><span class="switch"><input type="checkbox" id="cShow"> แสดง</span></div>
+      <div><button class="btn" id="saveCfg">บันทึกการตั้งค่า</button></div>
+    </div>
+    <div id="cfgMsg" class="msg"></div>
+    <p class="mut" style="margin:8px 0 0">เวลาที่ใช้เป็นเวลาประเทศไทย · เมื่อถึงเวลาปิด ผู้ที่ยังสอบอยู่จะถูกส่งคำตอบอัตโนมัติ แม้เริ่มสอบช้า · หากเลื่อนเวลาปิดให้เร็วขึ้นระหว่างสอบ ระบบจะปรับเวลาของผู้ที่กำลังสอบให้ทันที</p>
+  </div>
+
+  <div class="card stat" id="stats"></div>
+
+  <div class="card">
+    <div class="tabs"><button class="on" data-t="res">ผลสอบรายบุคคล</button><button data-t="items">วิเคราะห์ข้อสอบ</button></div>
+    <div id="tRes">
+      <div class="row" style="margin-bottom:10px">
+        <div><label>ค้นหา</label><input id="fq" placeholder="รหัส/ชื่อ"></div>
+        <div><label>หมู่เรียน</label><select id="fs"><option value="">ทั้งหมด</option></select></div>
+        <div><label>สถานะ</label><select id="fst"><option value="">ทั้งหมด</option><option value="in_progress">กำลังสอบ</option><option value="submitted">ส่งแล้ว</option><option value="flag">มีพฤติกรรมน่าสงสัย</option></select></div>
+        <div><label>รีเฟรชอัตโนมัติ</label><span class="switch"><input type="checkbox" id="auto" checked> ทุก 15 วินาที</span></div>
+        <div><button class="btn sec" id="refresh">รีเฟรช</button></div>
+        <div><button class="btn ok" id="csv">ดาวน์โหลดคะแนน (CSV)</button></div>
+        <div><button class="btn sec" id="csv2">ดาวน์โหลดคำตอบรายข้อ (CSV)</button></div>
+      </div>
+      <div style="overflow:auto;max-height:65vh"><table id="tbl"><thead><tr>
+        <th data-k="section">หมู่</th><th data-k="sid">รหัส</th><th data-k="name">ชื่อ-สกุล</th><th data-k="status">สถานะ</th>
+        <th data-k="raw" class="num">ถูก/60</th><th data-k="score" class="num">คะแนน/30</th><th data-k="violations" class="num">ทำผิด</th>
+        <th data-k="startedAt">เริ่ม</th><th data-k="submittedAt">ส่ง/เหลือเวลา</th><th>ข้อสังเกต</th><th>จัดการ</th>
+      </tr></thead><tbody></tbody></table></div>
+    </div>
+    <div id="tItems" style="display:none">
+      <p class="mut">p = ค่าความยาก (สัดส่วนผู้ตอบถูก; 0.20–0.80 เหมาะสม) · r = อำนาจจำแนก (กลุ่มสูง−กลุ่มต่ำ 27%; ≥ 0.20 ใช้ได้) · คำนวณจากผู้ที่ส่งแล้ว</p>
+      <div style="overflow:auto;max-height:65vh"><table id="itbl"><thead><tr><th>ข้อ</th><th>บท</th><th>คำถาม</th><th>เฉลย</th><th class="num">p</th><th class="num">r</th><th>ก</th><th>ข</th><th>ค</th><th>ง</th><th>ไม่ตอบ</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+<div class="ov" id="ov"><div class="box"><div class="row" style="justify-content:space-between"><h2 id="dTitle"></h2><button class="btn sec sm" id="dClose">ปิด</button></div><div id="dBody"></div></div></div>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id), L = ['ก', 'ข', 'ค', 'ง'];
+let TOK = sessionStorage.getItem('mt-admin') || '', ROWS = [], SORT = { k: 'sid', d: 1 }, timer = null;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const dt = s => s ? new Date(s).toLocaleString('th-TH', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '';
+const toLocal = iso => { if (!iso) return ''; const d = new Date(iso); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 16); };
+async function api(path, body, method){
+  const r = await fetch('/api/' + path, { method: method || (body ? 'POST' : 'GET'), headers: { 'content-type': 'application/json', authorization: 'Bearer ' + TOK }, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+  const j = await r.json().catch(() => ({}));
+  if (r.status === 401 && path !== 'admin/login') { logout(); throw new Error('auth'); }
+  return j;
+}
+$('lf').onsubmit = async e => {
+  e.preventDefault();
+  const j = await api('admin/login', { password: $('pw').value });
+  if (!j.ok) { $('lerr').style.display = 'block'; $('lerr').textContent = j.message || 'เข้าสู่ระบบไม่สำเร็จ'; return; }
+  TOK = j.token; sessionStorage.setItem('mt-admin', TOK); boot();
+};
+function logout(){ TOK = ''; sessionStorage.removeItem('mt-admin'); location.reload(); }
+$('logout').onclick = logout;
+
+const fmtTH = iso => new Date(iso).toLocaleString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'full', timeStyle: 'short' }) + ' น.';
+const dur = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return s < 3600 ? m + ' นาที ' + (s % 60) + ' วินาที' : (d ? d + ' วัน ' : '') + h + ' ชม. ' + m + ' นาที'; };
+let WIN = null, CFG = null, OFF = 0;
+function curMode(){ return (document.querySelector('input[name=mode]:checked') || {}).value || 'closed'; }
+function preview(){
+  $('pOpen').textContent = $('cOpenAt').value ? fmtTH(new Date($('cOpenAt').value).toISOString()) : '';
+  $('pClose').textContent = $('cCloseAt').value ? fmtTH(new Date($('cCloseAt').value).toISOString()) : '';
+  const m = curMode();
+  $('cOpenAt').disabled = m !== 'scheduled'; $('cOpenAt').parentNode.style.opacity = m === 'scheduled' ? 1 : .45;
+  $('cCloseAt').disabled = m === 'closed'; $('cCloseAt').parentNode.style.opacity = m === 'closed' ? .45 : 1;
+}
+function renderPhase(){
+  if (!CFG) return;
+  const now = Date.now() + OFF, el = $('phase');
+  const o = CFG.openAt ? Date.parse(CFG.openAt) : 0, c = CFG.closeAt ? Date.parse(CFG.closeAt) : 0;
+  let ph = 'closed', t = 'สถานะตอนนี้: ปิดการสอบ นักศึกษาเข้าสอบไม่ได้';
+  if (CFG.mode === 'scheduled' && o && c) {
+    if (now < o) { ph = 'before'; t = 'สถานะตอนนี้: รอเปิดสอบ · เปิดอัตโนมัติ ' + fmtTH(CFG.openAt) + ' (อีก ' + dur(o - now) + ') · ปิด ' + fmtTH(CFG.closeAt); }
+    else if (now < c) { ph = 'open'; t = 'สถานะตอนนี้: กำลังเปิดสอบ · ปิดอัตโนมัติ ' + fmtTH(CFG.closeAt) + ' (อีก ' + dur(c - now) + ')'; }
+    else { ph = 'ended'; t = 'สถานะตอนนี้: ปิดแล้ว (หมดเวลาเมื่อ ' + fmtTH(CFG.closeAt) + ')'; }
+  } else if (CFG.mode === 'open') {
+    if (c && now >= c) { ph = 'ended'; t = 'สถานะตอนนี้: ปิดแล้ว (หมดเวลาเมื่อ ' + fmtTH(CFG.closeAt) + ')'; }
+    else { ph = 'open'; t = 'สถานะตอนนี้: กำลังเปิดสอบ' + (c ? ' · ปิดอัตโนมัติ ' + fmtTH(CFG.closeAt) + ' (อีก ' + dur(c - now) + ')' : ' · เปิดจนกว่าจะเลือก "ปิดการสอบ"'); }
+  }
+  el.className = 'phase ' + ph; el.textContent = t;
+}
+setInterval(renderPhase, 1000);
+async function loadCfg(){
+  const j = await api('admin/config'); const c = j.config; CFG = c; OFF = j.serverNow - Date.now();
+  const r = document.querySelector('input[name=mode][value="' + c.mode + '"]'); if (r) r.checked = true;
+  $('cOpenAt').value = toLocal(c.openAt); $('cCloseAt').value = toLocal(c.closeAt);
+  $('cDur').value = c.durationMin; $('cMax').value = c.maxViolations; $('cSec').value = (c.sections || []).join(', '); $('cShow').checked = !!c.showScore;
+  const fs = $('fs'); const keep = fs.value; fs.innerHTML = '<option value="">ทั้งหมด</option>' + (c.sections || []).map(s => `<option>${esc(s)}</option>`).join(''); fs.value = keep;
+  preview(); renderPhase();
+}
+document.querySelectorAll('input[name=mode]').forEach(r => r.onchange = preview);
+['cOpenAt', 'cCloseAt'].forEach(id => $(id).oninput = preview);
+document.querySelectorAll('button[data-q]').forEach(b => b.onclick = () => {
+  if (!$('cOpenAt').value) { const d = new Date(); d.setSeconds(0, 0); $('cOpenAt').value = toLocal(d.toISOString()); }
+  const o = new Date($('cOpenAt').value); o.setMinutes(o.getMinutes() + Number(b.dataset.q)); $('cCloseAt').value = toLocal(o.toISOString()); preview();
+});
+$('clearTime').onclick = () => { $('cOpenAt').value = ''; $('cCloseAt').value = ''; preview(); };
+$('saveCfg').onclick = async () => {
+  const m = curMode(), msg = $('cfgMsg');
+  const iso = v => v ? new Date(v).toISOString() : null;
+  if (m === 'scheduled' && (!$('cOpenAt').value || !$('cCloseAt').value)) { msg.className = 'msg'; msg.style.display = 'block'; msg.textContent = 'โหมดตามกำหนดเวลา ต้องระบุทั้งวันเวลาเปิดและปิด'; return; }
+  const body = { mode: m, openAt: m === 'scheduled' ? iso($('cOpenAt').value) : null, closeAt: m === 'closed' ? CFG.closeAt : iso($('cCloseAt').value), durationMin: +$('cDur').value, maxViolations: +$('cMax').value, showScore: $('cShow').checked, sections: $('cSec').value.split(',').map(s => s.trim()).filter(Boolean) };
+  const j = await api('admin/config', body);
+  if (!j.ok) { msg.className = 'msg'; msg.style.display = 'block'; msg.textContent = j.message || 'บันทึกไม่สำเร็จ'; return; }
+  await loadCfg();
+  msg.className = 'msg ok'; msg.style.display = 'block'; msg.textContent = 'บันทึกการตั้งค่าแล้ว' + (j.capped ? ' · ปรับเวลาสิ้นสุดของผู้ที่กำลังสอบ ' + j.capped + ' คน' : '');
+  setTimeout(() => msg.style.display = 'none', 5000);
+};
+
+const REASON = { manual: 'ส่งเอง', timeout: 'หมดเวลา', timeout_late: 'หมดเวลา', timeout_server: 'หมดเวลา (ระบบปิดให้)', violations: 'ทำผิดครบ', admin: 'อาจารย์สั่งส่ง' };
+const FLAG = { device_mismatch: 'พยายามเข้าจากอุปกรณ์อื่น', name_mismatch: 'ชื่อไม่ตรง', devtools: 'อาจเปิด DevTools', printscreen: 'PrintScreen', multi_tab: 'เปิดหลายแท็บ' };
+async function loadRes(){
+  const j = await api('admin/results'); ROWS = j.rows || []; render();
+  const sub = ROWS.filter(r => r.status === 'submitted'), sc = sub.map(r => r.raw);
+  const mean = sc.length ? sc.reduce((a, b) => a + b, 0) / sc.length : 0;
+  const sd = sc.length > 1 ? Math.sqrt(sc.reduce((a, b) => a + (b - mean) ** 2, 0) / (sc.length - 1)) : 0;
+  $('stats').innerHTML = [['เข้าสอบทั้งหมด', ROWS.length], ['กำลังสอบ', ROWS.filter(r => r.status === 'in_progress').length], ['ส่งแล้ว', sub.length], ['ค่าเฉลี่ย (ถูก/60)', sc.length ? mean.toFixed(2) : '-'], ['S.D.', sc.length > 1 ? sd.toFixed(2) : '-'], ['สูงสุด / ต่ำสุด', sc.length ? Math.max(...sc) + ' / ' + Math.min(...sc) : '-'], ['มีพฤติกรรมน่าสงสัย', ROWS.filter(r => r.violations > 0 || r.flags.length).length]].map(([a, b]) => `<div><span class="mut">${a}</span><b>${b}</b></div>`).join('');
+}
+function filtered(){
+  const q = $('fq').value.trim().toLowerCase(), s = $('fs').value, st = $('fst').value;
+  return ROWS.filter(r => (!q || (r.sid + r.name).toLowerCase().includes(q)) && (!s || r.section === s) && (!st || (st === 'flag' ? (r.violations > 0 || r.flags.length) : r.status === st)))
+    .sort((a, b) => { const x = a[SORT.k] ?? '', y = b[SORT.k] ?? ''; return (x > y ? 1 : x < y ? -1 : 0) * SORT.d; });
+}
+function render(){
+  $('tbl').querySelector('tbody').innerHTML = filtered().map(r => {
+    const st = r.status === 'submitted' ? `<span class="tag s">ส่งแล้ว</span><br><span class="mut">${esc(REASON[r.reason] || r.reason)}</span>` : `<span class="tag p">กำลังสอบ</span>`;
+    const t2 = r.status === 'submitted' ? dt(r.submittedAt) : `เหลือ ${Math.floor(r.remainingSec / 60)}:${String(r.remainingSec % 60).padStart(2, '0')}`;
+    const fl = [r.violations ? `<span class="tag w">ออกนอกหน้า/เต็มจอ ${r.violations}</span>` : '', r.resumes ? `<span class="tag">กลับเข้าใหม่ ${r.resumes}</span>` : '', ...r.flags.map(f => `<span class="tag r">${esc(FLAG[f] || f)}</span>`)].join('');
+    const act = `<button class="btn sec sm" data-a="detail" data-s="${esc(r.sid)}">ดู</button> ` + (r.status === 'in_progress' ? `<button class="btn sec sm" data-a="unlock" data-s="${esc(r.sid)}">ปลดล็อกอุปกรณ์</button> <button class="btn sec sm" data-a="extend" data-s="${esc(r.sid)}">ต่อเวลา</button> <button class="btn sec sm" data-a="force" data-s="${esc(r.sid)}">บังคับส่ง</button> ` : '') + `<button class="btn sm" data-a="reset" data-s="${esc(r.sid)}">ลบ/ให้สอบใหม่</button>`;
+    return `<tr><td>${esc(r.section)}</td><td>${esc(r.sid)}</td><td>${esc(r.name)}</td><td>${st}</td><td class="num">${r.raw ?? ''}</td><td class="num">${r.score ?? ''}</td><td class="num ${r.violations ? 'bad' : ''}">${r.violations}</td><td>${dt(r.startedAt)}</td><td>${t2}</td><td>${fl}</td><td style="white-space:nowrap">${act}</td></tr>`;
+  }).join('') || '<tr><td colspan="11" class="mut">ยังไม่มีผู้เข้าสอบ</td></tr>';
+}
+document.querySelectorAll('#tbl th[data-k]').forEach(th => th.onclick = () => { const k = th.dataset.k; SORT = { k, d: SORT.k === k ? -SORT.d : 1 }; render(); });
+['fq', 'fs', 'fst'].forEach(id => $(id).oninput = render);
+$('refresh').onclick = loadRes;
+$('auto').onchange = () => { clearInterval(timer); if ($('auto').checked) timer = setInterval(loadRes, 15000); };
+
+$('tbl').onclick = async e => {
+  const b = e.target.closest('button[data-a]'); if (!b) return;
+  const a = b.dataset.a, sid = b.dataset.s;
+  if (a === 'detail') return detail(sid);
+  if (a === 'reset' && !confirm(`ลบข้อมูลการสอบของ ${sid} ทั้งหมด และอนุญาตให้สอบใหม่?\n(คะแนนเดิมจะหายถาวร)`)) return;
+  if (a === 'force' && !confirm(`บังคับส่งคำตอบของ ${sid} ทันที?`)) return;
+  if (a === 'unlock' && !confirm(`ปลดล็อกให้ ${sid} เข้าสอบต่อจากอุปกรณ์อื่นได้?`)) return;
+  let body = { sid };
+  if (a === 'extend') { const m = prompt('ต่อเวลาให้ ' + sid + ' กี่นาที?', '5'); if (!m) return; body.minutes = +m; }
+  const j = await api('admin/' + a, body); if (!j.ok) alert(j.message || 'ไม่สำเร็จ'); loadRes();
+};
+async function detail(sid){
+  const j = await api('admin/detail', { sid }); if (!j.ok) return alert(j.message);
+  const s = j.summary;
+  $('dTitle').textContent = `${s.sid} ${s.name} (${s.section})`;
+  const grid = j.items.map(it => `<span class="tag ${it.correct ? 's' : (it.chosen === null ? '' : 'r')}" title="บท ${it.ch} · เฉลย ${L[it.key]} · ผู้สอบเห็นเป็นข้อ ${it.n}">${it.no}:${it.chosen === null ? '–' : L[it.chosen]}</span>`).join('');
+  const log = j.log.slice().reverse().map(l => `<tr><td>${dt(l.t)}</td><td>${esc(l.type)}${l.counted ? ' <span class="tag w">นับ</span>' : ''}</td><td>${esc(l.detail || '')}</td></tr>`).join('');
+  $('dBody').innerHTML = `<p>สถานะ: <b>${s.status === 'submitted' ? 'ส่งแล้ว (' + esc(REASON[s.reason] || s.reason) + ')' : 'กำลังสอบ'}</b> · ถูก <b>${s.raw ?? '-'}</b>/60 · คะแนน <b>${s.score ?? '-'}</b>/30 · ทำผิด ${s.violations} ครั้ง · IP ${esc(s.ip)}</p>
+  <p class="mut">คำตอบตามลำดับข้อในเฉลย (ตัวเลือกแสดงเป็นตำแหน่งตามเฉลยไฟล์ Word; สีเขียว = ถูก, สีแดง = ผิด)</p><div>${grid}</div>
+  <h2 style="margin-top:14px">บันทึกเหตุการณ์</h2><div style="max-height:320px;overflow:auto"><table><thead><tr><th>เวลา</th><th>เหตุการณ์</th><th>รายละเอียด</th></tr></thead><tbody>${log}</tbody></table></div>`;
+  $('ov').style.display = 'flex';
+}
+$('dClose').onclick = () => $('ov').style.display = 'none';
+
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  $('tRes').style.display = b.dataset.t === 'res' ? '' : 'none'; $('tItems').style.display = b.dataset.t === 'items' ? '' : 'none';
+  if (b.dataset.t === 'items') loadItems();
+});
+async function loadItems(){
+  const j = await api('admin/items');
+  $('itbl').querySelector('tbody').innerHTML = j.items.map(i => `<tr><td>${i.no}</td><td>${i.ch}</td><td>${esc(i.text)}</td><td>${L[i.key]}</td><td class="num ${i.p !== null && (i.p < .2 || i.p > .8) ? 'bad' : ''}">${i.p ?? '-'}</td><td class="num ${i.r !== null && i.r < .2 ? 'bad' : ''}">${i.r ?? '-'}</td>${i.choices.map((c, k) => `<td class="num ${k === i.key ? 'good' : ''}">${c}</td>`).join('')}</tr>`).join('');
+}
+
+function csvDownload(name, rows){
+  const s = '﻿' + rows.map(r => r.map(v => { v = String(v ?? ''); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(',')).join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([s], { type: 'text/csv;charset=utf-8' })); a.download = name; a.click();
+}
+$('csv').onclick = async () => {
+  const j = await api('admin/export');
+  const rows = j.rows.sort((a, b) => (a.section + a.sid).localeCompare(b.section + b.sid));
+  csvDownload('คะแนนสอบปลายภาค_พล032437.csv', [['หมู่เรียน', 'รหัสนักศึกษา', 'ชื่อ-สกุล', 'ตอบถูก (60)', 'คะแนน (30)', 'จำนวนข้อที่ตอบ', 'สถานะ', 'วิธีส่ง', 'ทำผิด (ครั้ง)', 'ข้อสังเกต', 'เวลาเริ่ม', 'เวลาส่ง'],
+    ...rows.map(r => [r.section, r.sid, r.name, r.raw, r.score, r.answered, r.status === 'submitted' ? 'ส่งแล้ว' : 'กำลังสอบ', REASON[r.reason] || r.reason, r.violations, r.flags.map(f => FLAG[f] || f).join(' / '), dt(r.startedAt), dt(r.submittedAt)])]);
+};
+$('csv2').onclick = async () => {
+  const j = await api('admin/export');
+  const head = ['หมู่เรียน', 'รหัสนักศึกษา', 'ชื่อ-สกุล', ...Array.from({ length: 60 }, (_, i) => 'ข้อ ' + (i + 1)), 'ตอบถูก'];
+  csvDownload('คำตอบรายข้อ_พล032437.csv', [head, ...j.rows.map(r => { const a = Array(60).fill(''); r.items.forEach(it => a[it.no - 1] = it.chosen === null ? '' : L[it.chosen]); return [r.section, r.sid, r.name, ...a, r.raw]; })]);
+};
+setInterval(() => $('clock').textContent = new Date().toLocaleString('th-TH'), 1000);
+
+async function boot(){
+  $('login').style.display = 'none'; $('app').style.display = 'block';
+  try { await loadCfg(); await loadRes(); timer = setInterval(loadRes, 15000); } catch {}
+}
+if (TOK) boot();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>แบบทดสอบปลายภาค พล 032437 ทักษะและการสอนกีฬามวยไทย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#9b1c1c;--red2:#c0392b;--ink:#1f2328;--mut:#5b6470;--line:#e3e6ea;--bg:#f6f7f9;--ok:#1a7f37;--warn:#b26a00;--blue:#1f4e9b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Sarabun,'TH SarabunPSK',Tahoma,sans-serif;font-size:18px;line-height:1.55}
+body.exam{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.wrap{max-width:860px;margin:0 auto;padding:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+h1{font-size:26px;margin:0 0 4px;color:var(--red)}
+h2{font-size:20px;margin:0 0 10px}
+.sub{color:var(--mut);margin:0 0 16px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input,select{width:100%;padding:10px 12px;border:1px solid #c9ced6;border-radius:10px;font:inherit;background:#fff}
+input:focus,select:focus{outline:2px solid #d9a5a5;border-color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:10px;padding:11px 18px;font:inherit;font-weight:600;cursor:pointer;background:var(--red);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--ink);border:1px solid #c9ced6}
+.btn.ok{background:var(--ok)}
+.rules{background:#fff8f0;border:1px solid #f1d4b3;border-radius:12px;padding:12px 16px;margin:14px 0}
+.rules li{margin:3px 0}
+.msg{margin-top:12px;padding:10px 12px;border-radius:10px;display:none}
+.msg.err{display:block;background:#fdecec;color:#8a1c1c;border:1px solid #f3c2c2}
+.msg.info{display:block;background:#eef4ff;color:#1f3f7a;border:1px solid #c9daf8}
+.msg.warn{display:block;background:#fff8e6;color:#7a4b00;border:1px solid #f1d38a;text-align:center}
+.cd{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;margin-top:4px}
+.check{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-weight:400}
+.check input{width:auto;margin-top:6px}
+/* exam */
+#exam{display:none}
+.top{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.top .in{max-width:980px;margin:0 auto;padding:8px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.who{font-weight:600}
+.who small{display:block;color:var(--mut);font-weight:400}
+.sp{flex:1}
+.timer{font-variant-numeric:tabular-nums;font-size:22px;font-weight:700;padding:4px 12px;border-radius:10px;background:#f1f3f5}
+.timer.low{background:#fdecec;color:var(--red)}
+.pill{font-size:15px;padding:3px 10px;border-radius:999px;background:#f1f3f5;color:var(--mut)}
+.pill.v{background:#fff3e0;color:var(--warn)}
+.save{font-size:14px;color:var(--mut)}
+.main{max-width:980px;margin:0 auto;padding:16px;display:grid;grid-template-columns:1fr 260px;gap:16px}
+@media (max-width:820px){.main{grid-template-columns:1fr}.grid{order:2}}
+.qno{color:var(--mut);font-weight:600}
+.qtext{font-size:21px;font-weight:600;margin:6px 0 16px}
+.choice{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;border:1.5px solid #d5d9df;background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0;font:inherit;cursor:pointer}
+.choice:hover{border-color:#b9c0c9;background:#fafbfc}
+.choice .l{flex:0 0 32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#f1f3f5;font-weight:700}
+.choice.sel{border-color:var(--red);background:#fff5f5}
+.choice.sel .l{background:var(--red);color:#fff}
+.nav{display:flex;gap:10px;justify-content:space-between;margin-top:16px}
+.grid .card{padding:14px}
+.cells{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.cell{border:1px solid #d5d9df;background:#fff;border-radius:8px;padding:5px 0;font:inherit;font-size:15px;cursor:pointer}
+.cell.a{background:#e7f5ec;border-color:#9fd3b0}
+.cell.cur{outline:2px solid var(--red)}
+.legend{font-size:14px;color:var(--mut);margin-top:8px}
+/* overlays */
+.ov{position:fixed;inset:0;background:rgba(20,22,26,.86);z-index:50;display:none;align-items:center;justify-content:center;padding:20px}
+.ov .box{background:#fff;border-radius:16px;max-width:520px;width:100%;padding:24px;text-align:center}
+.ov h3{margin:0 0 8px;color:var(--red);font-size:22px}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:4;opacity:.07;background-repeat:repeat}
+#done{display:none}
+.topnav{background:#9b1c1c;color:#fff}
+.topnav .in{max-width:1100px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.topnav .brand{font-weight:700;font-size:18px;margin-right:auto}
+.topnav .brand small{display:block;font-weight:400;font-size:13px;opacity:.85}
+.topnav a{color:#fff;text-decoration:none;padding:8px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.45);font-weight:600}
+.topnav a.on{background:#fff;color:#9b1c1c;border-color:#fff}
+.topnav a:hover{background:rgba(255,255,255,.15)} .topnav a.on:hover{background:#fff}
+@media print{body{display:none!important}}
+</style>
+</head>
+<body>
+<noscript><div class="wrap"><div class="card">ต้องเปิดใช้ JavaScript เพื่อเข้าสอบ</div></div></noscript>
+
+<nav class="topnav" id="topnav"><div class="in">
+  <div class="brand">ระบบสอบออนไลน์ พล 032437<small>ทักษะและการสอนกีฬามวยไทย · ภาคการศึกษา 2/2569</small></div>
+  <a href="/" class="on">นักศึกษา: เข้าสอบ</a>
+  <a href="/admin">อาจารย์: ผู้ดูแลการสอบ</a>
+</div></nav>
+
+<!-- หน้าลงทะเบียน -->
+<div id="login" class="wrap">
+  <div class="card">
+    <h1>แบบทดสอบปลายภาค</h1>
+    <p class="sub" id="courseLine">รายวิชา พล 032437 ทักษะและการสอนกีฬามวยไทย ภาคการศึกษา 2/2569</p>
+    <div id="stateMsg" class="msg info">กำลังตรวจสอบสถานะการสอบ…</div>
+    <div class="rules">
+      <b>ข้อปฏิบัติในการสอบ</b>
+      <ol id="rules">
+        <li>ข้อสอบปรนัย 4 ตัวเลือก <span id="rN">60</span> ข้อ เวลา <span id="rT">90</span> นาที นับจากเวลาที่กดเริ่มสอบ</li>
+        <li>ระบบจะเปิดแบบเต็มจอ ห้ามออกจากโหมดเต็มจอ สลับแท็บ สลับโปรแกรม หรือเปิดหน้าต่างอื่น</li>
+        <li>ทุกครั้งที่ออกนอกหน้าสอบจะถูกบันทึก หากครบ <span id="rV">3</span> ครั้ง ระบบจะส่งคำตอบให้อัตโนมัติทันที</li>
+        <li>ห้ามคัดลอก วาง พิมพ์หน้าจอ หรือคลิกขวา ระบบบันทึกพฤติกรรมทั้งหมดให้อาจารย์ตรวจสอบ</li>
+        <li>สอบได้ 1 ครั้งต่อรหัสนักศึกษา และใช้ได้บนอุปกรณ์เดียว คำตอบบันทึกอัตโนมัติ หากเครื่องค้างให้เปิดหน้านี้ใหม่บนอุปกรณ์เดิม</li>
+        <li>เมื่อหมดเวลา ระบบส่งคำตอบให้อัตโนมัติ</li>
+      </ol>
+    </div>
+    <form id="f" autocomplete="off">
+      <label for="sid">รหัสนักศึกษา</label>
+      <input id="sid" inputmode="numeric" maxlength="15" required placeholder="เช่น 6612345678">
+      <label for="name">ชื่อ-สกุล</label>
+      <input id="name" maxlength="80" required placeholder="เช่น นายสมชาย ใจดี">
+      <label for="section">หมู่เรียน</label>
+      <select id="section" required><option value="">— เลือกหมู่เรียน —</option></select>
+      <label class="check"><input type="checkbox" id="agree"> ข้าพเจ้าได้อ่านและจะปฏิบัติตามข้อปฏิบัติในการสอบ และยืนยันว่าเป็นผู้เข้าสอบตามรหัสนักศึกษาข้างต้นจริง</label>
+      <div style="margin-top:16px"><button class="btn" id="go" type="submit" disabled>เข้าสู่โหมดเต็มจอและเริ่มสอบ</button></div>
+      <div id="err" class="msg"></div>
+    </form>
+  </div>
+</div>
+
+<!-- หน้าสอบ -->
+<div id="exam">
+  <div class="top"><div class="in">
+    <div class="who"><span id="whoName"></span><small id="whoSid"></small></div>
+    <div class="sp"></div>
+    <span class="save" id="saveState"></span>
+    <span class="pill" id="prog">ตอบแล้ว 0/60</span>
+    <span class="pill v" id="viol">ทำผิด 0/3</span>
+    <span class="timer" id="timer">--:--</span>
+  </div></div>
+  <div class="main">
+    <div>
+      <div class="card">
+        <div class="qno" id="qno"></div>
+        <div class="qtext" id="qtext"></div>
+        <div id="choices"></div>
+        <div class="nav">
+          <button class="btn sec" id="prev">‹ ข้อก่อนหน้า</button>
+          <button class="btn sec" id="next">ข้อถัดไป ›</button>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <b>ไปยังข้อ</b>
+        <div class="cells" id="cells" style="margin-top:8px"></div>
+        <div class="legend">สีเขียว = ตอบแล้ว · กรอบแดง = ข้อปัจจุบัน</div>
+        <button class="btn ok" id="submitBtn" style="width:100%;margin-top:14px">ส่งคำตอบ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- หน้าส่งแล้ว -->
+<div id="done" class="wrap"><div class="card" style="text-align:center">
+  <h1 style="color:var(--ok)">ส่งคำตอบเรียบร้อยแล้ว</h1>
+  <p id="doneMsg" class="sub"></p>
+  <p>ปิดหน้านี้ได้ อาจารย์ผู้สอนจะประกาศผลภายหลัง</p>
+</div></div>
+
+<div class="wm" id="wm" style="display:none"></div>
+
+<!-- overlays -->
+<div class="ov" id="ovFs"><div class="box">
+  <h3>ออกจากโหมดเต็มจอ</h3>
+  <p id="ovFsMsg">ระบบบันทึกการออกจากโหมดเต็มจอแล้ว กรุณากลับเข้าสู่โหมดเต็มจอเพื่อทำข้อสอบต่อ</p>
+  <button class="btn" id="reFs">กลับเข้าโหมดเต็มจอ</button>
+</div></div>
+<div class="ov" id="ovWarn"><div class="box">
+  <h3>ตรวจพบการออกนอกหน้าสอบ</h3>
+  <p id="ovWarnMsg"></p>
+  <button class="btn" id="okWarn">รับทราบ ทำข้อสอบต่อ</button>
+</div></div>
+<div class="ov" id="ovConfirm"><div class="box">
+  <h3>ยืนยันการส่งคำตอบ</h3>
+  <p id="confirmMsg"></p>
+  <div style="display:flex;gap:10px;justify-content:center;margin-top:10px">
+    <button class="btn sec" id="cancelSubmit">กลับไปตรวจทาน</button>
+    <button class="btn ok" id="doSubmit">ยืนยันส่ง</button>
+  </div>
+</div></div>
+<div class="ov" id="ovResume"><div class="box">
+  <h3>กลับเข้าสอบต่อ</h3>
+  <p>ระบบพบการสอบที่ยังไม่ส่งของ <b id="resName"></b> เวลายังคงนับต่อ กดปุ่มเพื่อกลับเข้าสอบในโหมดเต็มจอ</p>
+  <button class="btn" id="resumeBtn">เข้าสอบต่อ</button>
+  <div id="resErr" class="msg"></div>
+</div></div>
+<div class="ov" id="ovBlock"><div class="box">
+  <h3 id="blockTitle">ไม่สามารถเปิดหน้าสอบซ้อนได้</h3>
+  <p id="blockMsg">มีหน้าสอบเปิดอยู่แล้วในแท็บหรือหน้าต่างอื่น กรุณาปิดหน้านี้</p>
+</div></div>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const L = ['ก', 'ข', 'ค', 'ง'];
+const S = { sid:'', name:'', section:'', token:'', qs:[], answers:{}, cur:0, deadline:0, offset:0, viol:0, maxV:3, active:false, submitting:false, dirty:false, lastLeave:0 };
+
+// ---------- device id ----------
+function deviceId(){
+  let d = null; try { d = localStorage.getItem('mt-device'); } catch {}
+  if (!d) { d = (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now()); try { localStorage.setItem('mt-device', d); } catch {} }
+  return d;
+}
+const DEV = deviceId();
+
+// ---------- single-tab guard ----------
+let bc = null; try { bc = new BroadcastChannel('mt-exam'); } catch {}
+if (bc) {
+  bc.onmessage = e => {
+    if (e.data === 'hello' && S.active) { bc.postMessage('busy'); report('multi_tab', 'เปิดหน้าสอบซ้อน'); }
+    if (e.data === 'busy' && !S.active) { $('ovBlock').style.display = 'flex'; }
+  };
+  bc.postMessage('hello');
+}
+
+// ---------- api (serialized queue) ----------
+let q = Promise.resolve();
+function api(path, body){
+  const run = async () => {
+    const r = await fetch('/api/' + path, { method: body ? 'POST' : 'GET', headers: { 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' });
+    let j = {}; try { j = await r.json(); } catch {}
+    j._status = r.status; return j;
+  };
+  const p = q.then(run, run); q = p.catch(() => {}); return p;
+}
+
+// ---------- status / schedule ----------
+let ST = null, OFF = 0, CAN = false, polling = false;
+const fmtTH = iso => new Date(iso).toLocaleString('th-TH', { timeZone: 'Asia/Bangkok', dateStyle: 'full', timeStyle: 'short' }) + ' น.';
+function dur(ms){
+  const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+  return (d ? d + ' วัน ' : '') + String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(x).padStart(2, '0');
+}
+async function loadStatus(first){
+  try {
+    const s = await api('status'); ST = s; OFF = s.serverNow - Date.now();
+    $('rN').textContent = s.total; $('rT').textContent = s.durationMin; $('rV').textContent = s.maxViolations;
+    if (first) {
+      const sel = $('section'); (s.sections || []).forEach(x => { const o = document.createElement('option'); o.value = o.textContent = x; sel.appendChild(o); });
+      if (!s.sections || !s.sections.length) { sel.style.display = 'none'; sel.previousElementSibling.style.display = 'none'; sel.required = false; }
+    }
+    renderState();
+  } catch { const m = $('stateMsg'); m.className = 'msg err'; m.textContent = 'เชื่อมต่อระบบไม่ได้ กรุณาตรวจสอบอินเทอร์เน็ต'; CAN = false; updGo(); }
+}
+function updGo(){ $('go').disabled = !($('agree').checked && CAN); }
+function renderState(){
+  if (!ST || S.active) return;
+  const m = $('stateMsg'), now = Date.now() + OFF;
+  const o = ST.openAt ? Date.parse(ST.openAt) : 0, c = ST.closeAt ? Date.parse(ST.closeAt) : 0;
+  if (ST.phase === 'before') {
+    CAN = false; m.className = 'msg warn';
+    m.innerHTML = ''; const a = document.createElement('div'); a.textContent = 'เปิดให้เข้าสอบ ' + fmtTH(ST.openAt) + (c ? ' ถึง ' + new Date(c).toLocaleTimeString('th-TH', { timeZone: 'Asia/Bangkok', hour: '2-digit', minute: '2-digit' }) + ' น.' : '');
+    const b = document.createElement('div'); b.className = 'cd'; b.textContent = 'อีก ' + dur(o - now);
+    m.append(a, b);
+    if (now >= o && !polling) { polling = true; loadStatus().finally(() => polling = false); }
+  } else if (ST.phase === 'open') {
+    CAN = true; m.className = 'msg info';
+    m.textContent = 'เปิดให้เข้าสอบแล้ว กรอกข้อมูลให้ถูกต้องแล้วกดเริ่มสอบ' + (c ? ' · ปิดรับ ' + fmtTH(ST.closeAt) + ' (อีก ' + dur(c - now) + ')' : '');
+    if (c && now >= c && !polling) { polling = true; loadStatus().finally(() => polling = false); }
+  } else { CAN = false; m.className = 'msg err'; m.textContent = ST.message || 'ขณะนี้ยังไม่เปิดให้เข้าสอบ'; }
+  updGo();
+}
+setInterval(renderState, 1000);
+setInterval(() => { if (!S.active) loadStatus(); }, 30000);
+$('agree').onchange = updGo;
+
+// ---------- fullscreen ----------
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+const fsSupported = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+async function enterFs(){
+  if (!fsSupported) return true;
+  try { const el = document.documentElement; await (el.requestFullscreen ? el.requestFullscreen({ navigationUI: 'hide' }) : el.webkitRequestFullscreen()); return true; }
+  catch { return false; }
+}
+
+// ---------- start / resume ----------
+function showErr(el, t){ el.className = 'msg err'; el.textContent = t; }
+async function begin(sid, name, section, errEl){
+  const ok = await enterFs();
+  if (!ok) return showErr(errEl, 'เบราว์เซอร์ไม่อนุญาตโหมดเต็มจอ กรุณาใช้ Chrome หรือ Edge แล้วลองใหม่');
+  const r = await api('start', { sid, name, section, deviceId: DEV });
+  if (!r.ok) { if (fsEl()) document.exitFullscreen?.().catch(()=>{}); return showErr(errEl, r.message || 'เริ่มสอบไม่ได้'); }
+  Object.assign(S, { sid: r.sid, name: r.name, section: r.section, token: r.token, qs: r.questions, answers: r.answers || {}, deadline: r.deadline, offset: r.serverNow - Date.now(), viol: r.violations, maxV: r.maxViolations });
+  try { const pend = JSON.parse(localStorage.getItem('mt-pending-' + S.sid) || 'null'); if (pend) Object.assign(S.answers, pend); } catch {}
+  try { sessionStorage.setItem('mt-session', JSON.stringify({ sid: S.sid, name: S.name, section: S.section })); } catch {}
+  startExam();
+}
+$('f').onsubmit = e => {
+  e.preventDefault();
+  const sid = $('sid').value.replace(/\s/g, ''), name = $('name').value.trim(), section = $('section').value;
+  if (!/^[0-9A-Za-z-]{5,15}$/.test(sid)) return showErr($('err'), 'รหัสนักศึกษาไม่ถูกต้อง');
+  if (name.length < 4) return showErr($('err'), 'กรุณากรอกชื่อ-สกุล');
+  if ($('section').required && !section) return showErr($('err'), 'กรุณาเลือกหมู่เรียน');
+  $('go').disabled = true;
+  begin(sid, name, section, $('err')).finally(updGo);
+};
+(function checkResume(){
+  let s = null; try { s = JSON.parse(sessionStorage.getItem('mt-session') || 'null'); } catch {}
+  if (!s) return;
+  $('resName').textContent = s.name + ' (' + s.sid + ')';
+  $('ovResume').style.display = 'flex';
+  $('resumeBtn').onclick = () => begin(s.sid, s.name, s.section, $('resErr')).then(() => { if (S.active) $('ovResume').style.display = 'none'; });
+})();
+
+// ---------- exam UI ----------
+function watermark(){
+  const c = document.createElement('canvas'); c.width = 420; c.height = 220; const x = c.getContext('2d');
+  x.translate(210, 110); x.rotate(-0.35); x.font = '600 20px Sarabun, sans-serif'; x.fillStyle = '#000'; x.textAlign = 'center';
+  x.fillText(S.sid + ' ' + S.name, 0, 0); x.fillText('พล 032437 สอบปลายภาค', 0, 28);
+  const w = $('wm'); w.style.backgroundImage = 'url(' + c.toDataURL() + ')'; w.style.display = 'block';
+}
+function startExam(){
+  S.active = true; document.body.classList.add('exam'); $('topnav').style.display = 'none';
+  $('login').style.display = 'none'; $('exam').style.display = 'block';
+  $('whoName').textContent = S.name; $('whoSid').textContent = S.sid + ' · ' + S.section;
+  watermark(); buildCells(); show(0); updViol(); tick(); setInterval(tick, 500);
+  setInterval(() => { if (S.dirty) flush(); }, 15000);
+  setInterval(devtoolsCheck, 3000);
+}
+function buildCells(){
+  const c = $('cells'); c.innerHTML = '';
+  S.qs.forEach((q, i) => { const b = document.createElement('button'); b.className = 'cell'; b.textContent = q.n; b.onclick = () => show(i); c.appendChild(b); });
+  updCells();
+}
+function updCells(){
+  const n = Object.keys(S.answers).length;
+  [...$('cells').children].forEach((b, i) => { b.classList.toggle('a', S.answers[S.qs[i].n] !== undefined); b.classList.toggle('cur', i === S.cur); });
+  $('prog').textContent = 'ตอบแล้ว ' + n + '/' + S.qs.length;
+}
+function show(i){
+  S.cur = Math.max(0, Math.min(S.qs.length - 1, i));
+  const qq = S.qs[S.cur];
+  $('qno').textContent = 'ข้อที่ ' + qq.n + ' จาก ' + S.qs.length;
+  $('qtext').textContent = qq.text;
+  const box = $('choices'); box.innerHTML = '';
+  qq.choices.forEach((t, j) => {
+    const b = document.createElement('button'); b.className = 'choice' + (S.answers[qq.n] === j ? ' sel' : '');
+    const l = document.createElement('span'); l.className = 'l'; l.textContent = L[j];
+    const s = document.createElement('span'); s.textContent = t;
+    b.append(l, s); b.onclick = () => choose(qq.n, j); box.appendChild(b);
+  });
+  $('prev').disabled = S.cur === 0; $('next').disabled = S.cur === S.qs.length - 1;
+  updCells();
+}
+$('prev').onclick = () => show(S.cur - 1);
+$('next').onclick = () => show(S.cur + 1);
+function choose(n, j){
+  S.answers[n] = j; S.dirty = true;
+  try { localStorage.setItem('mt-pending-' + S.sid, JSON.stringify(S.answers)); } catch {}
+  show(S.cur); clearTimeout(S.st); S.st = setTimeout(flush, 800);
+}
+async function flush(){
+  if (!S.active || S.submitting) return;
+  S.dirty = false; $('saveState').textContent = 'กำลังบันทึก…';
+  try {
+    const r = await api('save', { sid: S.sid, token: S.token, answers: S.answers });
+    if (r.ok) { $('saveState').textContent = 'บันทึกแล้ว ' + new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }); if (r.serverNow) S.offset = r.serverNow - Date.now(); if (r.deadline) S.deadline = r.deadline; }
+    else if (r.submitted) finish('ระบบส่งคำตอบของคุณแล้ว');
+    else if (r._status === 401) finish('สิทธิ์การสอบสิ้นสุดแล้ว');
+    else { S.dirty = true; $('saveState').textContent = 'บันทึกไม่สำเร็จ จะลองใหม่'; }
+  } catch { S.dirty = true; $('saveState').textContent = 'ออฟไลน์ — คำตอบเก็บไว้ในเครื่อง จะส่งเมื่อออนไลน์'; }
+}
+
+// ---------- timer ----------
+function tick(){
+  if (!S.active) return;
+  const left = S.deadline - (Date.now() + S.offset);
+  const s = Math.max(0, Math.floor(left / 1000));
+  const t = $('timer');
+  t.textContent = String(Math.floor(s / 3600)).padStart(1, '0') + ':' + String(Math.floor(s % 3600 / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  t.classList.toggle('low', s <= 300);
+  if (s <= 0 && !S.submitting) doSubmit('timeout');
+}
+
+// ---------- violations ----------
+function updViol(){ $('viol').textContent = 'ทำผิด ' + S.viol + '/' + S.maxV; }
+async function report(type, detail){
+  if (!S.active || S.submitting) return;
+  try {
+    const r = await api('event', { sid: S.sid, token: S.token, type, detail, answers: S.answers });
+    if (r.terminated) { S.viol = r.violations; updViol(); finish('ระบบส่งคำตอบอัตโนมัติ เนื่องจากออกนอกหน้าสอบครบ ' + r.maxViolations + ' ครั้ง'); return r; }
+    if (typeof r.violations === 'number') { S.viol = r.violations; S.maxV = r.maxViolations; updViol(); }
+    return r;
+  } catch {}
+}
+async function leave(detail){
+  if (!S.active || S.submitting) return;
+  const now = Date.now(); if (now - S.lastLeave < 2500) return; S.lastLeave = now;
+  const r = await report('leave', detail);
+  if (r && r.counted && !r.terminated) { $('ovWarnMsg').textContent = 'ครั้งที่ ' + r.violations + ' จาก ' + r.maxViolations + ' ครั้ง หากครบ ระบบจะส่งคำตอบให้อัตโนมัติ'; $('ovWarn').style.display = 'flex'; }
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) leave('สลับแท็บ/ย่อหน้าต่าง'); });
+window.addEventListener('blur', () => leave('หน้าต่างไม่อยู่ในโฟกัส'));
+$('okWarn').onclick = () => { $('ovWarn').style.display = 'none'; if (fsSupported && !fsEl()) $('ovFs').style.display = 'flex'; };
+function onFsChange(){
+  if (!S.active || S.submitting || !fsSupported) return;
+  if (!fsEl()) { $('ovFs').style.display = 'flex'; const now = Date.now(); if (now - S.lastLeave > 2500) { S.lastLeave = now; report('fullscreen_exit', 'ออกจากโหมดเต็มจอ'); } }
+  else $('ovFs').style.display = 'none';
+}
+document.addEventListener('fullscreenchange', onFsChange);
+document.addEventListener('webkitfullscreenchange', onFsChange);
+$('reFs').onclick = async () => { if (await enterFs()) $('ovFs').style.display = 'none'; };
+
+// ---------- blocks ----------
+['copy', 'cut', 'paste', 'contextmenu', 'selectstart', 'dragstart', 'drop'].forEach(ev => document.addEventListener(ev, e => { if (S.active) { e.preventDefault(); if (ev !== 'selectstart' && ev !== 'dragstart') report(ev, 'ถูกบล็อก'); } }));
+document.addEventListener('keydown', e => {
+  if (!S.active) return;
+  const k = (e.key || '').toLowerCase(), mod = e.ctrlKey || e.metaKey;
+  const bad = (mod && ['c', 'v', 'x', 'a', 'p', 's', 'u', 'f', 'g', 'h', 'j', 'o'].includes(k)) || k === 'f12' || (mod && e.shiftKey && ['i', 'j', 'c', 'k', 's'].includes(k)) || k === 'printscreen' || (e.altKey && k === 'tab');
+  if (bad) { e.preventDefault(); e.stopPropagation(); report('key', (mod ? 'Ctrl+' : '') + (e.shiftKey ? 'Shift+' : '') + e.key); }
+  if (k === 'arrowright' && !mod) show(S.cur + 1);
+  if (k === 'arrowleft' && !mod) show(S.cur - 1);
+  if (['1', '2', '3', '4'].includes(k) && !mod) choose(S.qs[S.cur].n, Number(k) - 1);
+}, true);
+document.addEventListener('keyup', e => { if (S.active && (e.key || '').toLowerCase() === 'printscreen') { try { navigator.clipboard.writeText(''); } catch {} report('printscreen', 'กด PrintScreen'); } });
+window.addEventListener('beforeprint', () => S.active && report('print', 'สั่งพิมพ์'));
+window.addEventListener('beforeunload', e => { if (S.active && !S.submitting) { flush(); e.preventDefault(); e.returnValue = ''; } });
+let lastDev = 0;
+function devtoolsCheck(){
+  if (!S.active || fsEl()) return;
+  const open = (window.outerWidth - window.innerWidth > 200) || (window.outerHeight - window.innerHeight > 260);
+  if (open && Date.now() - lastDev > 60000) { lastDev = Date.now(); report('devtools', 'ขนาดหน้าต่างผิดปกติ (อาจเปิดเครื่องมือนักพัฒนา)'); }
+}
+
+// ---------- submit ----------
+$('submitBtn').onclick = () => {
+  const n = Object.keys(S.answers).length, miss = S.qs.length - n;
+  $('confirmMsg').textContent = 'ตอบแล้ว ' + n + ' ข้อ จาก ' + S.qs.length + ' ข้อ' + (miss ? ' (ยังไม่ได้ตอบ ' + miss + ' ข้อ)' : '') + ' เมื่อส่งแล้วจะแก้ไขไม่ได้';
+  $('ovConfirm').style.display = 'flex';
+};
+$('cancelSubmit').onclick = () => $('ovConfirm').style.display = 'none';
+$('doSubmit').onclick = () => doSubmit('manual');
+async function doSubmit(reason){
+  if (S.submitting) return; S.submitting = true;
+  $('ovConfirm').style.display = 'none'; $('saveState').textContent = 'กำลังส่งคำตอบ…';
+  for (let i = 0; i < 5; i++) {
+    try {
+      const r = await api('submit', { sid: S.sid, token: S.token, answers: S.answers, reason });
+      if (r.ok) { let m = 'ส่งเมื่อ ' + new Date(r.submittedAt).toLocaleString('th-TH') + ' · ตอบ ' + r.answered + ' จาก ' + r.total + ' ข้อ'; if (typeof r.score === 'number') m += ' · คะแนน ' + r.raw + '/' + r.total; return finish((reason === 'timeout' ? 'หมดเวลา ระบบส่งคำตอบอัตโนมัติ · ' : '') + m); }
+      if (r._status === 401) return finish('สิทธิ์การสอบสิ้นสุดแล้ว');
+    } catch {}
+    await new Promise(r => setTimeout(r, 1500 * (i + 1)));
+  }
+  S.submitting = false; $('saveState').textContent = 'ส่งไม่สำเร็จ ตรวจสอบอินเทอร์เน็ตแล้วกดส่งอีกครั้ง';
+}
+function finish(msg){
+  S.active = false; S.submitting = true;
+  try { sessionStorage.removeItem('mt-session'); localStorage.removeItem('mt-pending-' + S.sid); } catch {}
+  document.querySelectorAll('.ov').forEach(o => o.style.display = 'none');
+  $('exam').style.display = 'none'; $('wm').style.display = 'none'; $('login').style.display = 'none';
+  $('done').style.display = 'block'; $('doneMsg').textContent = msg;
+  if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document).catch?.(() => {});
+}
+
+loadStatus(true);
+})();
+</script>
+</body>
+</html>

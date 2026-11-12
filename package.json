@@ -1,0 +1,14 @@
+{
+  "name": "muaythai-final-exam",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ระบบสอบออนไลน์ แบบทดสอบปลายภาค พล 032437 ทักษะและการสอนกีฬามวยไทย",
+  "scripts": {
+    "test": "node tests/test.mjs",
+    "dev": "node tests/devserver.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
